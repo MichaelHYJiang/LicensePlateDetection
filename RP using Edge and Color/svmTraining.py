@@ -10,7 +10,7 @@ def loadimgdata():
     label = []
     data = []
     for i in range(n_pic_pos):
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\POS\\'+str(i)+'.jpg')
         img = cv2.resize(img, (20,5),interpolation = cv2.INTER_CUBIC)
         s = []
         for i0 in range(5):
@@ -20,7 +20,7 @@ def loadimgdata():
         data.append(s)
         label.append(1.0)
     for i in range(n_pic_neg):
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\negative\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\negative\\'+str(i)+'.jpg')
         img = cv2.resize(img, (20,5),interpolation = cv2.INTER_CUBIC)
         s = []
         for i0 in range(5):
@@ -39,7 +39,7 @@ def loadimg():
     wid = 30
     hei = 10
     for i in range(n_pic_pos):
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\POS\\'+str(i)+'.jpg')
         if img.ndim == 3:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = cv2.resize(img, (wid, hei),interpolation = cv2.INTER_CUBIC)
@@ -49,7 +49,7 @@ def loadimg():
     for i in range(n_pic_neg):
         if np.random.rand() < 0.95:
             continue
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\negative\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\negative\\'+str(i)+'.jpg')
         if img.ndim == 3:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = cv2.resize(img, (wid, hei),interpolation = cv2.INTER_CUBIC)
@@ -91,7 +91,7 @@ def quicktraining(C0 = 0.6):
     width = 36
     height = 12
     for i in range(n_pic_pos):
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\'+str(i)+'.jpg',0)
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\POS\\'+str(i)+'.jpg',0)
         img = cv2.resize(img, (width, height),interpolation = cv2.INTER_CUBIC)
         s = []
         for i0 in range(height):
@@ -102,7 +102,7 @@ def quicktraining(C0 = 0.6):
     for i in range(n_pic_neg):
         if np.random.rand() < 0.97:
             continue
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\negative\\'+str(i)+'.jpg',0)
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\negative\\'+str(i)+'.jpg',0)
         img = cv2.resize(img, (width, height),interpolation = cv2.INTER_CUBIC)
         s = []
         for i0 in range(height):
