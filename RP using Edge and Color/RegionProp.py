@@ -60,7 +60,7 @@ def NaiveBayes(hsv, img1):
         py0 = (sum(hist_h0) / sum(hist_h))**0.5
         py1 = 1 - py0
     #else:
-        image = cv2.imread('.\\0_Good\\ÑÕÉ«²ÉÑù\\try.jpg')
+        image = cv2.imread('.\\0_Good\\Ã‘Ã•Ã‰Â«Â²Ã‰Ã‘Ã¹\\try.jpg')
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         mask = np.ones([image.shape[0],image.shape[1]], 'uint8')
         mask[-1, 5:] = 0
@@ -357,7 +357,7 @@ def loadimg():
     wid = 25
     hei = 15
     for i in range(n_pic_pos):
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\POS\\'+str(i)+'.jpg')
         if img.ndim == 3:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = cv2.resize(img, (wid, hei),interpolation = cv2.INTER_CUBIC)
@@ -368,7 +368,7 @@ def loadimg():
     for i in range(n_pic_neg):
         if np.random.rand() < p0:
             continue
-        img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\negative\\'+str(i)+'.jpg')
+        img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\negative\\'+str(i)+'.jpg')
         if img.ndim == 3:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = cv2.resize(img, (wid, hei),interpolation = cv2.INTER_CUBIC)
