@@ -7,7 +7,7 @@ n_pic = 502
 i = 0
 
 while i < n_pic:
-    img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\' \
+    img = cv2.imread('H:\\Â³ÂµÃ…Ã†ÃÂ¼ÃÃ±\\Feature Training\\POS\\' \
                      + str(i) + '.jpg')
     sz0 = img.shape
     ratio = max(sz0) / 400.0
