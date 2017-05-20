@@ -1,14 +1,19 @@
-# -*- coding: cp936 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# This script visualizes results of color segmentation
+
 from RegionProp import colorSeg
 import cv2
 import numpy as np
+import os
 
-n_pic = 502
+n_pic = 503
 i = 0
 
 while i < n_pic:
-    img = cv2.imread('H:\\³µÅÆÍ¼Ïñ\\Feature Training\\POS\\' \
-                     + str(i) + '.jpg')
+    filepath = os.path.join('.', 'Feature Training', 'POS', str(i) + '.jpg')
+    img = cv2.imread(filepath)
     sz0 = img.shape
     ratio = max(sz0) / 400.0
     img = cv2.resize(img, (int(sz0[1] / ratio), int(sz0[0] / ratio)))
