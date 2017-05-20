@@ -87,8 +87,8 @@ def calcrate(d, l, b, alphas, n_pos = 503):
     print 'total:%f\npositive:%f\nnegative:%f\n' % (r1, r2, r3)
 
 def quicktraining(C0 = 0.6):
-    n_pic_pos = 503
-    n_pic_neg = 11453
+    n_pic_pos = POS
+    n_pic_neg = NEG
     label = []
     data = []
     width = 36
