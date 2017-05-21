@@ -146,7 +146,7 @@ def regionprop(imgsrc, sz, sobelsize = 7, thresh = 250, dx = 2, hsv = 'sample', 
     imgdst, envlp = drawenvlp(contours, imgnew)
     return imgdst, envlp
 
-def suffix(num):
+def suffix(num):# to get proper file suffix for files in '0_Good'
     if num <= 5:
         return '.bmp'
     else:
@@ -157,7 +157,8 @@ def demo():
     g = [x.split('.') for x in g if x.split('.')[-1].lower() in ('jpg', 'bmp')]
 
     k0 = 0
-    
+
+    # use a variable named 'write' to denote whether to write results into a file or not
     write = False
 
     if write:
@@ -258,9 +259,9 @@ def demo():
         
         key = cv2.waitKey(0)
         cv2.destroyAllWindows()
-        if key == 32:
+        if key == 32: # press space to quit
             break
-        elif key == 2490368:
+        elif key == 2490368: # press up to go back and any other key to go on
             k0 = k0 - 2
         k0 = k0 + 1
 
