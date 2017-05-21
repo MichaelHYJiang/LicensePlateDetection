@@ -29,9 +29,10 @@ while i < n_pic:
     img0[:,sz0[1]:,:] = img1
     cv2.imshow(str(i), img0)
     key = cv2.waitKey(0)
-    if key == 32 or key == 27:
+    if key == 32 or key == 27: # press space or esc to exit
         break
-    elif key == 2490368:
+    elif key == 2490368:    # press up to go back
+                            #press any other key to move to the next picture
         i -= 2
         if i < -1:
             i = -1
