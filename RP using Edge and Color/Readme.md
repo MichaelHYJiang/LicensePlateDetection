@@ -13,13 +13,18 @@ The directory 'Feature Training' has a following structure:<br>
 		|-- positive:	all positive region proposals( with IOU threshold is 0.7)
 
 ## Explanation for each python file
-ColorSegDemo.py: 	shows results of color segmentation on each picture in the '0_Good' directory<br>
-EdgeAndColorDemo.py:	shows one step-by-step result of combined edge feature and color segmentation method<br>
-RegionProp.py:		shows results of edge and color based region proposal method on each picture<br>
-svm.py:			a library from the book 'Machine Learning in Action' with simple alterations<br>
-svmTraining.py:		trains a linear svm model using samples in 'Feature Training' directory<br>
+#### ColorSegDemo.py
+　　shows results of color segmentation on each picture in the '0_Good' directory<br>
+#### EdgeAndColorDemo.py
+　　shows one step-by-step result of combined edge feature and color segmentation method<br>
+#### RegionProp.py
+　　shows results of edge and color based region proposal method on each picture<br>
+#### svm.py:<br>
+　　a library from the book 'Machine Learning in Action' with simple alterations<br>
+#### svmTraining.py
+　　trains a linear svm model using samples in 'Feature Training' directory<br>
 ## Usage
-For ColorSegDemo.py, EdgeAndColorDemo.py, RegionProp.py, and svmTraining.py, no command line argument is needed.<br>
+For <b>ColorSegDemo.py</b>, <b>EdgeAndColorDemo.py</b>, <b>RegionProp.py</b>, and <b>svmTraining.py</b>, no command line argument is needed.<br>
 They can be called with a simple command:<br>
 
 	python	****.py
