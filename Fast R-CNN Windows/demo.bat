@@ -1,0 +1,1 @@
+.\tools\demo.py --net vgg_cnn_m_1024 --mod .\output\vgg_cnn_m_1024_fast_rcnn_2_conv2_iter_40000.caffemodel

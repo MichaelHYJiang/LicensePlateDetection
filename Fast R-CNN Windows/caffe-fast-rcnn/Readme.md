@@ -6,7 +6,7 @@
 	2) set the value of `UseCuDNN` to false<br>
 	3) set the value of `PyhonSupport` to true<br> 
 	4) change the value of `PythonDir` to computer's python path<br>
-4. open `.\windows\Caffe.sln` with VS2013, and change configure of the solution to `release` <br>
+4. open `.\windows\Caffe.sln` with VS2013, and change the configure of the solution to `release` <br>
 5. set `Treat Warnings As Errors` to No, which is in:
 
 	PROJECT -> Properties -> Configuration Properties -> C/C++ -> General -> Treat Warnings As Errors<br>  
