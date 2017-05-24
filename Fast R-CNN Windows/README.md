@@ -18,8 +18,8 @@
   WITH_PYTHON_LAYER := 1
   ```
 
-  You can download [Makefile.config](https://dl.dropboxusercontent.com/s/6joa55k64xo2h68/Makefile.config?dl=0) for reference.
-2. Python packages you might not have: `cython`, `python-opencv`, `easydict`
+  You can download [Makefile.config](https://dl.dropboxusercontent.com/s/6joa55k64xo2h68/Makefile.config?dl=0) for reference.<br>
+2. Python packages you might not have: `cython`, `python-opencv`, `easydict`<br>
 3. [optional] MATLAB (required for PASCAL VOC evaluation only)
 
 ### Requirements: hardware
