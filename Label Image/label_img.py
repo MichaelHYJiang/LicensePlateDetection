@@ -66,10 +66,40 @@ def on_mouse1(event, x, y, flags, param):
 #===============================================================================
 # start
 #===============================================================================
-with open('new_record.txt','r') as f:
+try:
+    f = open('new_record.txt','r')
     g = f.readlines()
+    f.close()
+except IOError:
+    f = open('new_record.txt','w')
+    f.close()
+    print 'create file'
+    g = []
+
 
 already = set([x.split('\t')[0] for x in g])
+
+instruction = '''press space or esc to end
+press delete to record filename for future deletion
+press w to move up the left-up corner
+press s to move down the left-up corner
+press a to move left the left-up corner
+press d to move right the left-up corner
+press q to shorten the width
+press e to lengthen the width
+press z to shorten the height
+press c to lengthen the height
+press x to change the interval
+press v to change view
+press r to append a bounding box
+press f to save b-boxes for current picture
+press g to delete the last b-boxes for current picture
+'''
+
+if len(g) == 0: # if record file is null, then show directions
+    print instruction
+    os.system('pause')
+
 
 k = 0
 filelist = os.listdir('.')
@@ -77,7 +107,7 @@ img_format = set(['jpg', 'bmp', 'jpeg', 'png', 'dib', 'jpe', 'jfif', 'gif',
                   'tif', 'tiff'])
 allimage = set([x for x in filelist if x.split('.')[-1].lower() in img_format])
                 #number of all picture files
-
+n_total = len(allimage)
 remain = list(allimage - already)  # skip files that already annotated
 remain.sort()
 d = []          # to record files that need to be deleted
@@ -89,6 +119,8 @@ global x1, y1, w, h
 line = 5        # linewidth when drawing boxes
 bbox = []       # to record all bounding boxes
 n_box = 0       # number of boxes in current picture
+new = []
+num_new = 0
 
 t_start = time.time()   # timing
 l_time = time.localtime()
@@ -96,6 +128,8 @@ l_time = time.localtime()
 while k < len(remain) and k >= -len(g):
     if k < 0:
         filename = g[k].strip().split('\t')[0]
+    elif k < len(new):
+        filename = new[k].strip().split('\t')[0]
     else:
         filename = remain[k]
         
@@ -106,6 +140,9 @@ while k < len(remain) and k >= -len(g):
     img0 = img.copy()
     if k < 0:
         y = g[k].strip().split('\t')
+        img0 = draw_all_boxes(int(y[1]), y, img0)
+    elif k < len(new):
+        y = new[k].strip().split('\t')
         img0 = draw_all_boxes(int(y[1]), y, img0)
     else:
         coord = [x1, y1, w, h]
@@ -183,7 +220,8 @@ while k < len(remain) and k >= -len(g):
         n_box += len(bbox)
         str_to_save = filename + '\t' + str(len(bbox)) + '\t' + bbox_str + '\n'
         print str_to_save
-        g.append(str_to_save)
+        num_new += 1
+        new.append(str_to_save)
         bbox = []
     elif chr(key).lower() == 'g':#press g to delete the last b-boxes for current picture
         index = k - len(g) - 1
@@ -216,20 +254,15 @@ if write[0].lower() == 'y':
 if writefile == True:
     with open('.\\new_record.txt','w') as f:
         f.writelines(g)
-        #f.writelines(new)
+        f.writelines(new)
 #print d
-total_min = (t_end - t_start) / 60
-total_num = len(g) + len(new)
-log_str = '\n\n\tstart: ' + str(l_time.tm_hour) + ':' + str(l_time.tm_min) + \
-          ('\tduration: %.2f min\n\tlabel: %d pics\t(with %d plates)\n\tspeed: %.2f pics/min\t(%d pics labeled)'\
-           % (total_min, len(new), n_box, (len(new) / total_min), total_num))
-predict_time = (n_total - total_num) / (len(new) / total_min)
-predict = '预计剩余用时：%.2f分钟（约%.2f小时 or %.2f天）' % (predict_time, predict_time / 60, predict_time / 60 / 14)
-          
-print log_str
-print predict
-#with open('.\\label_log.txt','r+') as f:
-#    logs = f.readlines()
-#    f.write(log_str + '\n')
-
-#print 'testfile: ', testfile()
+    total_min = (t_end - t_start) / 60.0
+    total_num = len(g) + len(new)
+    log_str = '\n\n\tstart: ' + str(l_time.tm_hour) + ':' + str(l_time.tm_min) + \
+              ('\tduration: %.2f min\n\tlabel: %d pics\t(with %d objects)\n\tspeed: %.2f pics/min\t(%d pics labeled)'\
+               % (total_min, len(new), n_box, (len(new) / total_min), total_num))
+    predict_time = (n_total - total_num) / (len(new) / total_min)
+    predict = 'remaining time：%.2f min( %.2f hrs or %.2f days）' % (predict_time, predict_time / 60, predict_time / 60 / 14)
+              
+    print log_str
+    print predict
